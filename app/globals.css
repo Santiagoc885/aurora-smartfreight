@@ -135,3 +135,24 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes truck-roll {
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes truck-wheel-turn {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes truck-road-move {
+  to { stroke-dashoffset: -36; }
+}
+
+.truck-body { animation: truck-roll 1s ease-in-out infinite; }
+.truck-wheel { transform-box: fill-box; transform-origin: center; animation: truck-wheel-turn 2s linear infinite; }
+.truck-road { animation: truck-road-move 1s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .truck-body, .truck-wheel, .truck-road { animation: none; }
+  .truck-body rect { transition: none !important; }
+}
